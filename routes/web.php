@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -57,3 +58,11 @@ Route::prefix('/post')->name('post.')->group(function () {
     Route::post('/store', [PostController::class, 'store'])->name('store');
 
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/settings', [HomeController::class, 'settings'])->name('settings');
+
+Route::get('/deleteAccount', [HomeController::class, 'deleteAccount'])->name('deleteAccount');

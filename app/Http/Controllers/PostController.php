@@ -41,7 +41,7 @@ class PostController extends Controller
         $post->categories()->syncWithoutDetaching($category_ids);
 
         $boards = Board::all();
-        $posts = Post::with(['board'])->paginate(5)
+        $posts = Post::with(['board'])->paginate(5);
         $categories = Category::all();
 
         return view('post.create', [
