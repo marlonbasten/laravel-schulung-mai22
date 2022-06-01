@@ -11,7 +11,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth', 'admin:3']);
     }
 
     /**
@@ -34,5 +34,14 @@ class HomeController extends Controller
         auth()->user()->delete();
         auth()->logout();
         return redirect()->route('login');
+    }
+
+    public function setLanguage($locale)
+    {
+        session([
+            'locale' => $locale
+        ]);
+
+        return redirect()->back();
     }
 }

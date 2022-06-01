@@ -20,25 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test/{id?}', function($id = null) {
-    $name = '<p>Max Mustermann</p>';
-    $age = 15;
-
-    $people = [
-        'Max Mustermann',
-        'Peter',
-        'Test'
-    ];
-
-    return view('test1', [
-        'name' => $name,
-        'age' => $age,
-        'people' => $people,
-        'id' => $id
+Route::get('/test/{id?}', function ($id = null) {
+    return response()->json([
+        'success' => true,
+        'message' => 'Passt so.'
     ]);
 })->name('app.test');
 
-Route::get('/home', function (){
+Route::get('/home', function () {
 
     $posts = Post::all();
 
@@ -66,3 +55,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/settings', [HomeController::class, 'settings'])->name('settings');
 
 Route::get('/deleteAccount', [HomeController::class, 'deleteAccount'])->name('deleteAccount');
+
+Route::get('/setLocale/{locale}', [HomeController::class, 'setLanguage'])->name('setLocale');
+

@@ -6,7 +6,6 @@ use App\Http\Requests\StorePostRequest;
 use App\Models\Board;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -54,6 +53,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         // $data = $request->all(); - Nur benutzen wenn keine Validations vorhanden sind, aber am besten nie benutzen :)
+        $this->authorize('create', Post::class);
 
         $post = Post::create($request->validated());
         $post->categories()->attach($request->categories);

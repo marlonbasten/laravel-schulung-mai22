@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class AdminMiddleware
+class LocaleMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,12 +14,13 @@ class AdminMiddleware
      * @param \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $id)
+    public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check() || auth()->user()->id != $id) {
-            echo 'Du bist kein Admin!';
-            exit();
-        }
+        $browserLanguage = substr(explode(',', $request->header('accept-language'))[0], 0, 2);
+
+        $locale = session('locale', $browserLanguage);
+
+        app()->setLocale($locale);
 
         return $next($request);
     }
