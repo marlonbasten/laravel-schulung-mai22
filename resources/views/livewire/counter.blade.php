@@ -7,3 +7,4 @@
 
     <button wire:click="rerenderPosts()">Neuladen</button>
 </div>
+
