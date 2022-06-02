@@ -26,11 +26,11 @@ class HomeController extends Controller
 
     public function settings()
     {
-        $token = auth()->user()->createToken('Lese Token', [
-            'post.index',
-            'post.show'
-        ]);
-        dd($token->plainTextToken);
+//        $token = auth()->user()->createToken('Lese Token', [
+//            'post.index',
+//            'post.show'
+//        ]);
+//        dd($token->plainTextToken);
         return view('settings');
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\JwtAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
  * D - Delete
  */
 Route::apiResource('post', PostController::class)
-    ->middleware(['auth:sanctum', 'ability:post.all']);
+    ->middleware(['auth:jwt']);
+
+Route::post('login', [JwtAuthController::class, 'login']);
