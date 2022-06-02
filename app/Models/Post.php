@@ -16,6 +16,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int $board_id
+ * @property string|null $file_disk
+ * @property string|null $file_path
+ * @property string|null $file_type
  * @property-read \App\Models\Board|null $board
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
  * @property-read int|null $categories_count
@@ -27,6 +30,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereFileDisk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereFilePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereFileType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
