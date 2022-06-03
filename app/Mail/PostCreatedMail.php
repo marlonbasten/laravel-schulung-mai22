@@ -6,7 +6,6 @@ use App\Models\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Storage;
 
 class PostCreatedMail extends Mailable
 {
@@ -29,7 +28,7 @@ class PostCreatedMail extends Mailable
      */
     public function build()
     {
-        $image = Storage::disk($this->post->file_disk)->path($this->post->file_path);
-        return $this->view('mails.postCreated', ['post' => $this->post])->attach($image);
+//        $image = Storage::disk($this->post->file_disk)->path($this->post->file_path);
+        return $this->view('mails.postCreated', ['post' => $this->post]);
     }
 }

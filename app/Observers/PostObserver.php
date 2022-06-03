@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\GenerateExcelExport;
 use App\Mail\PostCreatedMail;
 use App\Models\Post;
 use Illuminate\Support\Facades\Mail;
@@ -21,6 +22,7 @@ class PostObserver
 
     public function created(Post $post)
     {
-        Mail::to('blabla@test.de')->send(new PostCreatedMail($post));
+        Mail::to('blabla@test.de')->queue(new PostCreatedMail($post));
+        GenerateExcelExport::dispatch();
     }
 }

@@ -17,6 +17,7 @@ class PostResource extends JsonResource
             'title' => $this->title,
             'created' => $this->created_at?->format('d.m.Y H:i:s'),
             'board' => BoardResource::make($this->board),
+            'content' => $this->content
         ];
     }
 }

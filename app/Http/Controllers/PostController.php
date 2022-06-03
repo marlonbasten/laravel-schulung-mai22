@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PostExport;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Board;
 use App\Models\Category;
 use App\Models\Post;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PostController extends Controller
 {
     public function create()
     {
+        return Excel::download(new PostExport(), 'posts.xlsx');
         // $posts = Post::where('content', 'Mega toll')
         //     ->orWhere('title', 'test')
         //     ->orderBy('id', 'desc')
