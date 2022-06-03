@@ -32,6 +32,8 @@ class PostController extends Controller
         $post->save();
         $post->categories()->attach($request->categories);
 
+//        event(new PostCreatedEvent($post));
+
         return PostResource::make($post);
     }
 

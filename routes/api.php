@@ -27,7 +27,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
  * U - Update
  * D - Delete
  */
-Route::apiResource('post', PostController::class)
-    ->middleware(['auth:jwt']);
+Route::apiResource('post', PostController::class);
 
 Route::post('login', [JwtAuthController::class, 'login']);
